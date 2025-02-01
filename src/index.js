@@ -1,5 +1,3 @@
-import m from "mithril";
-
 var root = document.body;
 
 function fetchRace(random_number) {
