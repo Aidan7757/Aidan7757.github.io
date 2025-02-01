@@ -1,4 +1,3 @@
-import m from "mithril";
 import "./App.css";
 import { RaceWords } from "./index.js";
 
