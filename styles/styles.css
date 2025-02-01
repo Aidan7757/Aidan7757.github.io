@@ -1,0 +1,23 @@
+.race-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.timer {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.race-text {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 20px 0;
+}
+
+.results {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f5f5f5;
+  border-radius: 5px;
+}
