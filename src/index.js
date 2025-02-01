@@ -138,8 +138,8 @@ const Race = {
   accuracy: 0,
   timer_interval: null,
   time_limit: 30, // Default time limit (30 seconds)
-  is_time_limit_set: false, // Whether the user has selected a time limit
-  selected_time_limit: null, // Track which time limit is selected
+  is_time_limit_set: true, // Automatically set to true for default time limit
+  selected_time_limit: 30, // Default selected time limit
 
   oncreate: function (vnode) {
     document.body.style.backgroundColor = "#1e1e1e";
@@ -163,13 +163,7 @@ const Race = {
           !this.has_started &&
           (event.key.length === 1 || event.key === "Enter")
         ) {
-          if (!this.is_time_limit_set) {
-            alert(
-              "Please select a time limit (15 or 30 seconds) before starting."
-            );
-            return;
-          }
-
+          // Remove the check for is_time_limit_set
           this.has_started = true;
           this.start_time = performance.now();
 
@@ -262,38 +256,9 @@ const Race = {
     document.body.style.color = "";
   },
 
-  setTimeLimit: function (limit) {
-    this.time_limit = limit;
-    this.is_time_limit_set = true;
-    this.selected_time_limit = limit; // Set the selected time limit
-    m.redraw();
-  },
-
   view: function (vnode) {
     return m("div.race-container", [
-      !this.has_started &&
-        m("div.time-limit-selector", [
-          m("h3", "Select Time Limit:"),
-          m(
-            "button",
-            {
-              onclick: () => this.setTimeLimit(15),
-              disabled: this.is_time_limit_set,
-              class: this.selected_time_limit === 15 ? "selected" : "",
-            },
-            "15 Seconds"
-          ),
-          m(
-            "button",
-            {
-              onclick: () => this.setTimeLimit(30),
-              disabled: this.is_time_limit_set,
-              class: this.selected_time_limit === 30 ? "selected" : "",
-            },
-            "30 Seconds"
-          ),
-        ]),
-
+      // Remove the time-limit-selector UI
       m("div.stats-bar", [
         m("div.stat", [
           m("div.stat-label", "wpm"),
